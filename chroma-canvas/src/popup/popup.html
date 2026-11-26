@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Chroma Canvas</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <header class="head">
+    <span class="dot"></span>
+    <h1>Chroma Canvas</h1>
+    <button id="open-full" class="link-btn" title="Open the full panel">Customize ↗</button>
+  </header>
+
+  <section class="block">
+    <h2>Accent</h2>
+    <div class="swatches" id="swatches"></div>
+  </section>
+
+  <section class="block">
+    <h2>Mode</h2>
+    <div class="chips" id="mode-chips"></div>
+  </section>
+
+  <section class="block">
+    <h2>Wallpaper</h2>
+    <div class="chips" id="bg-type"></div>
+    <div class="chips tight" id="bg-choice"></div>
+    <button class="wide-btn" id="shuffle">Shuffle</button>
+  </section>
+
+  <section class="block" id="site-block">
+    <h2>This site <span class="host" id="host"></span></h2>
+    <label class="row">
+      <span>Restyle websites</span>
+      <span class="switch"><input type="checkbox" id="site-enabled" /><span></span></span>
+    </label>
+    <div id="site-controls">
+      <label class="row">
+        <span>Skip this site</span>
+        <span class="switch"><input type="checkbox" id="site-disabled" /><span></span></span>
+      </label>
+      <label class="row">
+        <span>Force dark here</span>
+        <span class="switch"><input type="checkbox" id="site-dark" /><span></span></span>
+      </label>
+      <label class="row">
+        <span>Accent scrollbar</span>
+        <span class="switch"><input type="checkbox" id="site-scrollbar" /><span></span></span>
+      </label>
+      <label class="row">
+        <span>Reading width</span>
+        <input type="range" id="site-width" min="0" max="1200" step="40" />
+      </label>
+      <p class="hint" id="site-width-val"></p>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <span><kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>T</kbd> toggle theming</span>
+    <span><kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>W</kbd> next wallpaper</span>
+  </footer>
+
+  <script type="module" src="popup.js"></script>
+</body>
+</html>

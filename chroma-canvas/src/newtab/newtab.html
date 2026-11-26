@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en" data-mode="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>New Tab</title>
+  <link rel="stylesheet" href="newtab.css" />
+</head>
+<body>
+  <!-- ------------------------------------------------ background stack -->
+  <div id="bg" aria-hidden="true">
+    <div id="bg-solid"></div>
+    <canvas id="bg-live"></canvas>
+    <video id="bg-video" autoplay loop muted playsinline></video>
+    <div id="bg-image"></div>
+    <div id="bg-dim"></div>
+    <div id="bg-vignette"></div>
+    <div id="bg-grain"></div>
+  </div>
+
+  <div id="spotlight" aria-hidden="true"></div>
+  <div id="trail-layer" aria-hidden="true"></div>
+
+  <!-- ----------------------------------------------------------- stage -->
+  <main id="stage" class="stage"></main>
+
+  <!-- ----------------------------------------------------- chrome bits -->
+  <div class="corner-tools">
+    <button class="tool-btn" id="btn-shuffle" title="Shuffle wallpaper (Alt+Shift+W)" aria-label="Shuffle wallpaper">
+      <svg viewBox="0 0 24 24"><path d="M16 3h5v5M21 3l-7 7M8 21H3v-5M3 21l7-7M21 16v5h-5M14 14l7 7M3 8V3h5M10 10 3 3"/></svg>
+    </button>
+    <button class="tool-btn" id="btn-settings" title="Customize (press ,)" aria-label="Open customization panel">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.9.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.9 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.9l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.9.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.9-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.9V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg>
+    </button>
+  </div>
+
+  <!-- ------------------------------------------------- command palette -->
+  <div id="palette" class="palette" hidden>
+    <div class="palette-box" role="dialog" aria-label="Command palette">
+      <input id="palette-input" type="text" placeholder="Type a command, site or search…" autocomplete="off" spellcheck="false" />
+      <ul id="palette-list" class="palette-list"></ul>
+      <div class="palette-foot"><kbd>↑</kbd><kbd>↓</kbd> navigate <kbd>↵</kbd> run <kbd>esc</kbd> close</div>
+    </div>
+  </div>
+
+  <!-- ------------------------------------------------- settings drawer -->
+  <aside id="drawer" class="drawer" hidden aria-label="Customization">
+    <header class="drawer-head">
+      <h2>Customize</h2>
+      <div class="drawer-head-actions">
+        <button class="ghost-btn" id="btn-export" title="Export settings as JSON">Export</button>
+        <button class="ghost-btn" id="btn-import" title="Import settings JSON">Import</button>
+        <button class="icon-btn" id="btn-close-drawer" aria-label="Close">
+          <svg viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg>
+        </button>
+      </div>
+    </header>
+    <nav class="drawer-tabs" id="drawer-tabs" role="tablist"></nav>
+    <div class="drawer-body" id="drawer-body"></div>
+    <footer class="drawer-foot">
+      <button class="ghost-btn danger" id="btn-reset">Reset everything</button>
+      <span class="drawer-hint">Changes save instantly</span>
+    </footer>
+  </aside>
+
+  <div id="toast" class="toast" hidden></div>
+  <input type="file" id="hidden-file" hidden />
+
+  <script type="module" src="newtab.js"></script>
+</body>
+</html>
